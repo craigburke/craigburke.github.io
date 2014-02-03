@@ -8,6 +8,9 @@ title: Craig Burke
 		<h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
 		<p>{{ post.excerpt }}</p>
 		<footer>
+			<section class="caption group">
+                		<a class="disquscomments" href="{{ post.url }}#disqus_thread">Comments</a>
+            		</section>
 			<div class="date">
 				<a href="{{ post.url }}">{{ post.date |  date: "%B %d, %Y" }}</a>		
 			</div>
@@ -30,3 +33,15 @@ title: Craig Burke
     <a href="/page{{ paginator.next_page }}" rel="next">Next »</a>
   {% endif %}
 </nav>
+
+ <script type="text/javascript">
+    var disqus_shortname = '{{ site.disqus_shortname }}';
+
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+    
