@@ -1,0 +1,18 @@
+---
+layout: default
+comments: true
+---
+
+<article class="post">
+<h3><a href="{{ page.url }}">{{ page.title }}</a></h3>
+{{ content }}
+<footer>
+	{% if page.comments %}
+		{% include disqus.html %}
+	{% endif %}
+
+	<div class="date">
+		<a href="{{ page.url }}">{{ page.date |  date: "%B %d, %Y" }}</a>
+	</div>
+</footer>
+</article>
