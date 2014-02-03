@@ -102,6 +102,10 @@ dl:after {
 	margin-left: 50px;
 }
 
+dl.books h4 {
+	padding-top: 0;
+}
+
 dl.books dt,
 dl.books dd {
 	padding-top: 20px;
