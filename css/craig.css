@@ -1,5 +1,9 @@
 img { max-width: 100% }
 
+strong {
+	font-weight: bold;
+}
+
 #container {
     font-family: Helvetica, 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.7em;
