@@ -5,14 +5,14 @@ date: 2014-03-03
 ---
 
 There's no overarching theme for this month's books that I've read, there are just two newer technologies that
-I wanted to really dig into a bit more (Angular.js and MongoDB).
+I wanted to really dig into a bit more (AngularJS and MongoDB).
 
 <dl class="books">
   <dt>
-  <a href="http://www.amazon.com/gp/product/1782161821/ref=as_li_ss_il?ie=UTF8&camp=1789&creative=390957&creativeASIN=1782161821&linkCode=as2&tag=crabur-20"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1782161821&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=crabur-20" ></a>
+	<a href="http://www.packtpub.com/angularjs-web-application-development/book"><img src="/images/books/mastering-web-angularjs.jpg" /></a>
   </dt>
   <dd>
-    <h4><a href="http://www.amazon.com/gp/product/1782161821/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=1782161821&linkCode=as2&tag=crabur-20">Mastering Web Application Development with AngularJS</a></h4>
+    <h4><a href="http://www.packtpub.com/angularjs-web-application-development/book">Mastering Web Application Development with AngularJS</a></h4>
     <p>This book was a really thorough and outstanding exploration of the AngularJS framework.
        It really goes into depth explaining how to organize your application and make use of some of the more powerful features like services, factories, directives,
        etc. The explanation of the $digest cycle gives some good insight into how the framework operates too. The book pulls examples from a practical <a href="https://github.com/angular-app/angular-app">CRUD application</a> to really give you a sense of how you could build out a more complicated application.
@@ -20,11 +20,10 @@ I wanted to really dig into a bit more (Angular.js and MongoDB).
     </p>
   </dd>
   <dt>
-
-      <a href="http://www.amazon.com/gp/product/1449344682/ref=as_li_ss_il?ie=UTF8&camp=1789&creative=390957&creativeASIN=1449344682&linkCode=as2&tag=crabur-20"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1449344682&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=crabur-20" ></a>
- </dt>
+	<a href="http://shop.oreilly.com/product/0636920001096.do"><img src="/images/books/mongodb-definitive.jpg" /></a>
+  </dt>
   <dd>
-    <h4><a href="http://www.amazon.com/gp/product/1449344682/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=1449344682&linkCode=as2&tag=crabur-20">MongoDB: The Definitive Guide</a>
+    <h4><a href="http://shop.oreilly.com/product/0636920001096.do">MongoDB: The Definitive Guide</a>
     </h4>
     <p>
     This book is a pretty nice introduction to MongoDB, especially for someone like me who's more used to traditional relational databases.

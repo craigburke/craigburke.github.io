@@ -55,7 +55,7 @@ A regular request uses the standard list view, but an ajax request is going to u
 </html>
 {% endhighlight %}
 
-<strong>_grid.gsp</strong>
+<strong>&#95;grid.gsp</strong>
 
 {% highlight xml %}
 <table class="ajax">
@@ -104,7 +104,7 @@ function setupGridAjax() {
             success: function(data) {
                 $(grid).fadeOut('fast', function() {$(this).html(data).fadeIn('slow');});
             }
-        })
+        });
     });
 }
 {% endhighlight %}
