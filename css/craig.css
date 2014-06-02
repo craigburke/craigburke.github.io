@@ -423,3 +423,45 @@ nav#links li.archive a:hover {
     font-size: .8em;
 }
 
+
+@media (max-width: 900px) {
+    header {
+        margin-bottom: 120px;
+        height: 140px;
+    }
+
+    header h1 {
+        padding-top: 20px;
+        text-align:center;
+    }
+
+    #color_bar {
+        display: none;
+    }
+
+    nav#links {
+        width: 100%;
+        background: #333;
+        top: 143px;
+        right: inherit;
+        left: 0;
+        padding: 10px 0 10px 30px;
+
+    }
+
+    nav#links li {
+        margin: auto;
+        float: none;
+    }
+
+    dl dt {
+        width: 100%;
+        text-align: left;
+    }
+
+    dl dd {
+        margin: 0;
+    }
+
+
+}
