@@ -435,6 +435,11 @@ nav#links li.archive a:hover {
         text-align:center;
     }
 
+    header h1 a {
+        background-size: 100% auto;
+
+    }
+
     #color_bar {
         display: none;
     }
@@ -454,6 +459,7 @@ nav#links li.archive a:hover {
         float: none;
     }
 
+
     dl dt {
         width: 100%;
         text-align: left;
@@ -463,5 +469,23 @@ nav#links li.archive a:hover {
         margin: 0;
     }
 
+    #posts {
+        width: auto;
+    }
+
+    #sidebar {
+        float: none;
+        width: auto;
+    }
+
 
 }
+
+@media (max-width: 500px) {
+
+    nav#links li {
+        width: 15%;
+        background-size: 100% 200%;
+    }
+}
+
