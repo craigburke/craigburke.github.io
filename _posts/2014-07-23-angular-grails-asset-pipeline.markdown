@@ -5,9 +5,9 @@ date: 2014-07-24
 ---
 
 Grails and AngularJs are two incredible frameworks and with the newer REST features of Grails they can be a pretty
-nice pairing. That isn't so say though that there isn't some work involved in getting them to play well together.
+nice pairing. That isn't to say that there isn't some work involved in getting them to play well together though.
 
-I've developed a couple of Grails Asset Pipeline plugins to help with that though: 
+I've developed a couple of Grails Asset Pipeline plugins to help with that: 
 [Angular Template Asset Pipeline](https://github.com/craigburke/angular-template-asset-pipeline) 
 and [Angular Annotate Asset Pipeline](https://github.com/craigburke/angular-annotate-asset-pipeline).
 
