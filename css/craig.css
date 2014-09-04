@@ -424,20 +424,28 @@ nav#links li.archive a:hover {
 }
 
 
+.highlight {
+    overflow: scroll;
+}
+
 @media (max-width: 900px) {
+
     header {
         margin-bottom: 120px;
-        height: 140px;
+        height: 130px;
     }
 
     header h1 {
-        padding-top: 20px;
+        width: auto;
+        padding-top: 25px;
+        padding-left: 20px;
+        padding-right: 20px;
         text-align:center;
     }
 
     header h1 a {
+        width: auto;
         background-size: 100% auto;
-
     }
 
     #color_bar {
@@ -447,11 +455,15 @@ nav#links li.archive a:hover {
     nav#links {
         width: 100%;
         background: #333;
-        top: 143px;
+        top: 120px;
         right: inherit;
         left: 0;
         padding: 10px 0 10px 30px;
 
+    }
+
+    nav#links ul {
+        padding-left: 20px;
     }
 
     nav#links li {
@@ -470,7 +482,9 @@ nav#links li.archive a:hover {
     }
 
     #posts {
-        width: auto;
+        margin: 2%;
+        padding: 0;
+        width: 96%;
     }
 
     #sidebar {
@@ -482,6 +496,10 @@ nav#links li.archive a:hover {
 }
 
 @media (max-width: 500px) {
+
+    nav#links {
+        padding: 10px 0;
+    }
 
     nav#links li {
         width: 15%;
