@@ -39,7 +39,7 @@ This month's books include another excellent Groovy book and a solid overview of
 
 		<p>I would have liked to have seen a little more detail (especially in the parts about Groovy and Spring Boot), but it was all well written.</p>
 
-		<p><strong>This book is geared more toward Spring beginners, but it served as a nice refresher for me while aquainting me more with some of newer features if the framework.</strong></p>
+		<p><strong>This book is geared more toward Spring beginners, but it served as a nice refresher for me while aquainting me more with some of newer features of the framework.</strong></p>
 
   </dd>
 
