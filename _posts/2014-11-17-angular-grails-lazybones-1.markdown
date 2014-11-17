@@ -87,6 +87,7 @@ We've got a paged list of employees that we can add to (as well as edit and dele
 #### Project stucture
 
 Next we'll take a look at exactly what the lazybones generate command actually added to our project. First lets take a look at the relevant parts of our **grails-app/conf/UrlMappings.groovy** file:
+
 {% highlight groovy %}
 class UrlMappings {
 
@@ -102,6 +103,7 @@ Here we see that two mappings have been created one for the REST actions **/api/
 
 Now we'll look at the **EmployeeController** that was generated which handles all those REST requests:
 
+**grails-app/controllers/com/craigburke/EmployeeController.groovy**
 {% highlight groovy %}
 package com.craigburke
 import com.craigburke.Employee
@@ -116,6 +118,8 @@ class EmployeeController extends PagedRestfulController {
 The **PagedRestfulController** is very similar to the default **RestfulController** that's part of Grails with some additional support for filtering and paging.
 
 Here's what the **employee.gsp** view looks like:
+
+**grails-app/views/employee.gsp**
 {% highlight html %}
 <!DOCTYPE html>
 <html>
@@ -163,6 +167,7 @@ The default filtering works well for simple cases but you'll likely want to over
 
 For example if I wanted to add just a simple box that searches both first name and last name I would override the **loadPagedResults** method in my **EmployeeController** like so:
 
+**grails-app/controllers/com/craigburke/EmployeeController.groovy**
 {% highlight groovy %}
 package com.craigburke
 import grails.gorm.PagedResultList
