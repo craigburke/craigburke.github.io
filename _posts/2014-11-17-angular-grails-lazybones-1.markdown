@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Angular Grails Lazybones - Part 1: Getting Started"
+title: "AngularJS Grails Lazybones - Part 1: Getting Started"
 date: 2014-11-17
 ---
 
