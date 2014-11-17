@@ -29,7 +29,7 @@ Define value for your application 'version' [0.1]: 1.0
 Define the name for your war file [ROOT.war]: my-app.war
 {% endhighlight %}
 
-When selecting the AngularJS version (question 2), you can opt for either AngularJS 1.2 or 1.3. The main difference is that 1.3 doesn't support Intenet Explorer 8 and below. **If you need to support an older version of IE it probably makes sense to choose 1.2 for the AngularJS version**.
+When selecting the AngularJS version (question 2), you can opt for either AngularJS 1.2 or 1.3. <strong>If you need to support an older version of Internet Explorer(IE) such as IE 8 or below, you should choose AngularJS 1.2. The 1.3 version does not support IE 8 and below.</strong>
 
 After answering these questions you should then have a new Grails project in the folder you specified (example-app in this case) with some goodies like Bootstrap, AngularStrap and Font Awesome already included. As we'll see later, there's also a lazybones subtemplate (located in the .lazybones folder) that will help you create new Angular modules.  
 
@@ -39,8 +39,9 @@ One other way that this project is different from a standard Grails project is t
 
 #### Adding a Domain Class
 
-Once we've created our project, the next step is to add a domain class in the typical **grails-app/domain** location. Here's an Employee domain class I'll use for this example:
+Once we've created our project, the next step is to add a domain class in the usual **grails-app/domain** location. Here's an Employee domain class I'll use for this example:
 
+**grails-app/domain/com/craigburke/Employee.groovy**
 {% highlight groovy %}
 package com.craigburke
 
