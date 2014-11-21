@@ -31,7 +31,7 @@ Define the name for your war file [ROOT.war]: my-app.war
 
 When selecting the AngularJS version (question 2), you can opt for either AngularJS 1.2 or 1.3. <strong>If you need to support an older version of Internet Explorer(IE) such as IE 8 or below, you should choose AngularJS 1.2. The 1.3 version does not support IE 8 and below.</strong>
 
-After answering these questions you should then have a new Grails project in the folder you specified (example-app in this case) with some goodies like Bootstrap, AngularStrap and Font Awesome already included. As we'll see later, there's also a lazybones subtemplate (located in the .lazybones folder) that will help you create new Angular modules.  
+After answering these questions you should then have a new Grails project in the folder you specified (example-app in this case) with some goodies like Bootstrap, Angular UI and Font Awesome already included. As we'll see later, there's also a lazybones subtemplate (located in the .lazybones folder) that will help you create new Angular modules.  
 
 One other way that this project is different from a standard Grails project is that it makes use of [Grails Gradle plugin](https://github.com/grails/grails-gradle-plugin). 
 
@@ -161,7 +161,7 @@ gradlew jasmineWatch
 
 These Gradle tasks are setup so that all the dependencies are downloaded and resolved for you. The only thing you need to have install is the JDK. 
 
-#### Next Steps
+#### Paging and Filtering
 
 The default filtering works well for simple cases but you'll likely want to override this method to have a bit more control over what is filtered. 
 
@@ -219,6 +219,42 @@ The relevant part of the HTML in my **/grails-app/assets/javascripts/example-app
  </div>
 
 {% endhighlight %}
+
+
+#### JSON Response
+
+When you generate a new CRUD module, a custom JSON marshaller is created for your domain class and added to to the **CustomMarshallerRegistrar** class.
+
+Here's an example of what the default marshaller for the Employee class would look like:
+
+**src/groovy/com/craigburke/CustomMarshallerRegistrar.groovy**
+{% highlight groovy %}
+package com.craigburke
+
+import grails.converters.JSON
+
+class CustomMarshallerRegistrar {
+
+	void registerMarshallers() {
+		JSON.registerObjectMarshaller(com.craigburke.Employee) {
+			def map = [:]
+			map['id'] = it?.id
+			map['firstName'] = it?.firstName
+			map['lastName'] = it?.lastName
+			map['birthDate'] = it?.birthDate
+			map['salary'] = it?.salary
+			map['toText'] = it?.toString()
+			return map 
+		} 
+	}
+
+}
+{% endhighlight %}
+
+By default it includes all the fields from the Employee domain class in addition to a **toText** property that is set to the value of the toString method. 
+
+**If, for example, you wanted to remove salary property from the default JSON response, just remove that line from here.** This will mean though, that you'll need to modify your Angular Templates to remove the references to salary as well. In this case, the templates would be located within the
+**grails-app/assets/javascripts/example-app/employee/templates** folder.
 
 #### Conclusion
 
