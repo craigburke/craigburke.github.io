@@ -24,7 +24,7 @@ You can use the variables **DOLLAR_SIGN,** **TAB,** and **NEWLINE** within your 
 
 You'll notice in the screenshot above, that certain folder and file names have values like **\_resourceName\_** or **\_groupPath\_.** These refer to values that allow you to have more control over the destination of your template files. Note the use of the underscores surrounding the variable names in the file/folder names.  
 
-These following variables that are used to build the path within your project:  
+Here's a list of the variables that can be used to help build the paths within your project:  
 
 <table class="table">
 <thead>
@@ -58,8 +58,6 @@ These following variables that are used to build the path within your project:
 	</tr>
 </tbody>	
 </table>
-
-
 
 
 #### Domain properties
