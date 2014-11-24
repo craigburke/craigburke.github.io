@@ -260,4 +260,4 @@ By default it includes all the fields from the Employee domain class in addition
 
 As you can see, this template allows you to quickly get started building an AngularJS application in Grails.
 
-The template was designed to be highly customizable and there are lots of ways to customize and modify your app and the modules you can generate. I'll go into more detail on the more advanced customization in part 2.
+The template was designed to be highly customizable and there are lots of ways to customize and modify your app and the modules you can generate. I go into more detail on the more advanced customization in <a href="/2014/11/24/angular-grails-template-2.html">Part 2: Advanced Customization</a>.
