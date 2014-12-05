@@ -183,10 +183,10 @@ class EmployeeController extends PagedRestfulController {
           def filter = params.filter
 
           resource.createCriteria().list(max: params.max, offset: params.offset) {
-              if (filter.search) {
+              if (filter?.search) {
 				  or {
-                  	ilike('firstName', filter.search)
-                  	ilike('lastName', filter.search)				  
+                  	ilike('firstName', "${filter.search}%")
+                  	ilike('lastName', "${filter.search}%")				  
 				  }
               }
               if (params.sort) {
