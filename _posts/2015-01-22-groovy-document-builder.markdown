@@ -12,8 +12,8 @@ The best way to illustrate how it works is probably with an example
 
 **example.groovy**:
 {% highlight groovy %}
-@Grab(group='com.craigburke.document', module='pdf', version='0.1.5')
-@Grab(group='com.craigburke.document', module='word', version='0.1.5')
+@Grab(group='com.craigburke.document', module='pdf', version='0.1.6')
+@Grab(group='com.craigburke.document', module='word', version='0.1.6')
 
 import com.craigburke.document.builder.PdfDocumentBuilder
 import com.craigburke.document.builder.WordDocumentBuilder
