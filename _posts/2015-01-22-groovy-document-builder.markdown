@@ -26,9 +26,7 @@ def builders = [
 def RAINBOW_COLORS = ['#FF0000', '#FF7F00', '#FFFF00', '#00FF00', '#0000FF', '#4B0082', '#8B00FF']
 
 String GROOVY_IMAGE_URL = 'http://www.craigburke.com/images/posts/groovy-logo.png'
-byte[] groovyImageData = new ByteArrayOutputStream().withStream { out -> 
-    out << new URL(GROOVY_IMAGE_URL).openStream()
-}.toByteArray()
+byte[] groovyImageData = new URL(GROOVY_IMAGE_URL).bytes
 
 builders.each { builder ->
     builder.create { document(font: [family: 'Helvetica', size: 14.pt], margin: [top: 0.75.inches]) {
@@ -84,7 +82,7 @@ both a Word document and a PDF fille will be created that look something like th
 A couple things to note about the code above:
 
 1. Both builders use completely different libraries (iText for pdf and Apache POI for Word) but I can hide those differences thanks to Groovy's amazing builder support. 
-2. Typically you wouldn't create an ByteArrayOutputStream and then grab the bytes of an image from a URL like I did here. Something like **byte[] groovyImageData = new File('groovy.png').bytes** would be more typical. I did it this way so the example could be completely self contained.
+2. Typically you wouldn't grab the bytes of an image from a URL like I did here. Something like **byte[] groovyImageData = new File('groovy.png').bytes** would be more typical. I did it this way so the example could be completely self contained.
 3. The properties like margins, font sizes, widths, etc all expect a value in points. Since options like margins are better expressed in inches you can use values like 2.inches or 1.inch and the 
 conversion to points will be done for you.
 4. Font options are inherited and properties be overriden at any level without impacting the rest of the document.
