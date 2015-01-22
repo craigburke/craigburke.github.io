@@ -6,7 +6,7 @@ date: 2015-01-22
 
 While there are lots of extremely capable Java libraries for generating different kinds of documents (iText, Apache POI, etc), it's 
 not always easy to use these libraries. It's for that reason that I decided to leverage Groovy's excellent support for building DSLs to
-create the [Groovy Document Builder](https://github.com/craigburke/document-builder) to simplify this. 
+create the [Groovy Document Builder](https://github.com/craigburke/document-builder) in order to simplify this. 
 
 The best way to illustrate how it works is probably with an example
 
@@ -83,12 +83,13 @@ both a Word document and a PDF fille will be created that look something like th
 
 A couple things to note about the code above:
 
-1. Typically you wouldn't create an ByteArrayOutputStream and then grab the bytes of an image from a URL like I did here. Something like **byte[] groovyImageData = new File('groovy.png').bytes** would be more typical. I did it this way so the example could be completely self contained.
-2. The properties like margins, font sizes, widths, etc all expect a value in points. Since options like margins are better expressed in inches you can use values like 2.inches or 1.inch and the 
+1. Both builders use completely different libraries (iText for pdf and Apache POI for Word) but I can hide those differences thanks to Groovy's amazing builder support. 
+2. Typically you wouldn't create an ByteArrayOutputStream and then grab the bytes of an image from a URL like I did here. Something like **byte[] groovyImageData = new File('groovy.png').bytes** would be more typical. I did it this way so the example could be completely self contained.
+3. The properties like margins, font sizes, widths, etc all expect a value in points. Since options like margins are better expressed in inches you can use values like 2.inches or 1.inch and the 
 conversion to points will be done for you.
-3. Font options are inherited and properties be overriden at any level without impacting the rest of the document.
+4. Font options are inherited and properties be overriden at any level without impacting the rest of the document.
 
-I think this is a pretty good start and it meets the needs for several projects I'm working on right now, but there's a lot I'd like to add to this such as lists, links, page headers, page footers, and sections. 
+I think this is a really good start for this project and it meets the needs for several projects I'm working on right now, but there's a lot I'd like to add to this such as lists, links, page headers, page footers, and sections. 
 Documentation is clearly lacking at this point and I'd like to beef up the test suite as well. 
 I'm also toying around with the idea of generating simpler document types like Markdown or AsciiDoc. 
 
