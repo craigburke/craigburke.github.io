@@ -67,6 +67,14 @@ p {
     padding: 12px 0;
 }
 
+ol {
+	margin-left: 50px;
+}
+
+ol li {
+	padding-bottom: 20px;
+}
+
 dl, table.table { 
 	background: #FFF;
 	background: rgba(255,255,255,0.5);
