@@ -11,8 +11,8 @@ Here's an updated example using the latest version:
 
 **example.groovy**:
 {% highlight groovy %}
-@Grab(group='com.craigburke.document', module='pdf', version='0.2.3')
-@Grab(group='com.craigburke.document', module='word', version='0.2.3')
+@Grab(group='com.craigburke.document', module='pdf', version='0.2.4')
+@Grab(group='com.craigburke.document', module='word', version='0.2.4')
 
 import com.craigburke.document.builder.PdfDocumentBuilder
 import com.craigburke.document.builder.WordDocumentBuilder
@@ -32,7 +32,7 @@ builders.each { builder ->
     builder.create { 
 		document(font: [family: 'Helvetica', size: 14.pt], margin: [top: 0.75.inches]) {
 
-        paragraph "Groovy Document Builder v.0.2.3", font: [color: '#990000', size: 22.pt]
+        paragraph "Groovy Document Builder v.0.2.4", font: [color: '#990000', size: 22.pt]
 
         paragraph {
             font.size = 42.pt
