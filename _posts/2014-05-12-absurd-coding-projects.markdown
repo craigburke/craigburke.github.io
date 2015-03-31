@@ -4,7 +4,7 @@ title: "Absurd Coding Projects"
 date: 2014-05-12
 ---
 
-First of all, if you haven't yet played with my <a target="_blank" href="http://doogie.interwebs.io">Doogie Howser Journal Generator,</a> you should probably check
+First of all, if you haven't yet played with my <a target="_blank" href="http://doogie.craigburke.com">Doogie Howser Journal Generator,</a> you should probably check
 that out first before continuing to read this post. After playing around with that, your reaction
 probably ranges somewhere between "that was completely pointless" and "huh, that's neat." 
 Not exactly life changing stuff but fun.
@@ -50,5 +50,5 @@ I have plenty of ideas for projects just as ridiculous as this one, and I'm goin
 always be able to produce something, but that's not really the point of it. For me, an absurd coding project should be first and foremost fun, but also a way to learn new things and get 
 a chance to practice them all while amusing myself (and hopefully others). 
 
-*   [Doogie Howser Journal Generator](http://doogie.interwebs.io)
+*   [Doogie Howser Journal Generator](http://doogie.craigburke.com)
 *   [Doogie Github Project](https://github.com/craigburke/doogie)

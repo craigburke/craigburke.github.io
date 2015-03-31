@@ -14,12 +14,12 @@ and [Angular Annotate Asset Pipeline](https://github.com/craigburke/angular-anno
 I've also created an example app that makes use of these two plugins and includes some directives and services to make 
 development a bit easier (similar to Rob Fletcher's Grails Angular Scaffolding project).
 
-You can see a demo of the app here: [Grails Angular App Demo](http://angular-grails.interwebs.io/)
+You can see a demo of the app here: [Grails Angular App Demo](http://angular-grails.craigburke.com/)
 
 **Here's an overview of my Angular related projects:**
 
-#### [Angular Grails App](https://github.com/craigburke/angular-grails)
-This is an example app that shows how to use the plugins and hopefully provides a good jumping off point for anyone
+#### [Angular Grails Lazybones Template](https://github.com/craigburke/lazybones-angular-grails)
+This is a lazybones template that hopefully provides a good jumping off point for anyone
 looking to use Grails and AngularJS together. I'm still actively tweaking and improving upon this project. Any
 feedback or suggestions are certainly welcome.
 
