@@ -1,0 +1,68 @@
+==================================================================
+https://keybase.io/craigburke
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://www.craigburke.com
+  * I am craigburke (https://keybase.io/craigburke) on keybase.
+  * I have a public key with fingerprint 655B 5128 B045 14EB 11B6  6235 7173 0C9F 5134 A47A
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "0101ec131372aa5225a6d768d0a5fb1d10d69d39da17a9ab5a6c785dd0ca48ceedc80a",
+            "fingerprint": "655b5128b04514eb11b6623571730c9f5134a47a",
+            "host": "keybase.io",
+            "key_id": "71730c9f5134a47a",
+            "kid": "0101ec131372aa5225a6d768d0a5fb1d10d69d39da17a9ab5a6c785dd0ca48ceedc80a",
+            "uid": "2ca996cc67ab2e0b49d28be124ec5d00",
+            "username": "craigburke"
+        },
+        "service": {
+            "hostname": "www.craigburke.com",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1457217806,
+    "expire_in": 157680000,
+    "prev": "9da91be07c8ce7fe3e8b02d9988f03c4c17d35302f46a2dc58e1de7fcbfc3cfc",
+    "seqno": 16,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.51
+Comment: https://keybase.io/crypto
+
+yMIiAnicrZJbSFRBGMd3yxSXXCqMCo3qdHvZbObcj/biQyRIN4rSWlrntutB3bOe
+Pa6KaEQPSQXdS1+yKKO3EkywG7pdoR5EIova7qVkF4uILLLmiNFLj83LMDO/7/99
+/2++61mTPT7vl+72wqa9+zO9d3rbajybHiF/g4AtWi/kNwgVbHxjlZTFnVCFSYV8
+AUAAGYESlDQRIUUUFaRSTdUpQEoYQwoBVQ0qGRRBDRkI82ei6QqlgCBZJ4xRogMk
+BISwGY0wO2abUYfLqoqCFSjqGMgKlBmGEKuqKCka1CRAjLACJRnJmhtYbsXdCF4c
+RnGWZ1r8jh9C4+X9g//PddeMy4kEGYZKiKohLDKAZYPy4hkUZUYUCoALxpkdRVWM
+08RGZgTX2BVMaAwI/D5hEua21vUywdTW1ub95fKIVcU1YrblWMSq5O/ljhPLd8Od
++tg4z3BoQimEzSjl7eQBCWbHTSsq5ENOEsd0paGsaCLUdKAGBFYXM20WMl1C4fYB
+X24aluCS3LwBMQMa4Ya1MJMY/w+RGoauh4FEZAI1KikSEMOyikRKFJ1BykGCw0Qi
+YSK43qqjFtfmqRwU4ZpxMxJFTo3NnSd7gmker8+TPmWSO2ceX+a0P9M31JwxJr7Y
+VtB3qnXx5nkHpz8uHJr62Rg97PeZRd9LjfROeO5EccO6eV1qoGPlJZy1uts/q3WG
+UrZjTvHowca7yUP7s/ubBnYXnemsJg9ugEdbFnxKFby+vKZZG8Hrj+Xk3h5ZuTQ1
+0JgBLrQf6ree9fiTJ4OD2aBnQ/Lm59aWkks7j6TS1sx0JK+3ZDQynHIy7w+XPQVz
+5SWVP14ur99Y2j/29X17SSTnZ1Zx1VUIcvueb76inu5MX/Gq59r286deDZ9sSrYf
+f/KkwxcsbendektYsQ949UWzg6+7jr452zq26qPnYof/3oG3C5PfAuVtRe9+dQ+u
+tTfsqpi/pyu7LsP3MLHsw287FEg9
+=0Uly
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/craigburke
+
+==================================================================
