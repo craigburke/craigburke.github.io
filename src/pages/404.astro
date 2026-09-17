@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SEO from '../components/SEO.astro';
+---
+
+<BaseLayout>
+  <SEO slot="head" title="Page not found" description="The requested page could not be found." />
+  <main class="not-found">
+    <p>404</p>
+    <h1>That page isn’t here.</h1>
+    <a href="/">Return home</a>
+  </main>
+  <style>
+    .not-found { margin: 0 auto; max-width: 720px; padding: 7rem 1.5rem; }
+    p { color: var(--color-accent); font-size: .8rem; font-weight: 650; letter-spacing: .1em; }
+    h1 { font-size: clamp(2.5rem, 7vw, 5rem); letter-spacing: -.025em; margin: .6rem 0 1.5rem; }
+    a { color: var(--color-accent); font-weight: 600; }
+  </style>
+</BaseLayout>

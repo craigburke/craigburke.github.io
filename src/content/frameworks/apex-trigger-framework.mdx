@@ -1,0 +1,33 @@
+---
+title: "Apex Trigger Framework"
+summary: "Metadata-controlled Apex trigger framework."
+order: 2
+---
+
+## Purpose
+
+The framework standardizes trigger execution and keeps business logic in focused handler classes. Individual handlers can be enabled or disabled through metadata.
+
+## Implementation
+
+Each trigger delegates to a handler. The base class routes the active trigger operation to the appropriate before or after method, with the relevant new and old records.
+
+```apex
+trigger ExampleTrigger on Example__c (before insert, before update) {
+    new ExampleTriggerHandler().run();
+}
+
+public class ExampleTriggerHandler extends TriggerHandler {
+    public override void beforeInsert(List<SObject> newRecords) {
+        applyBusinessRules(newRecords);
+    }
+
+    public override void beforeUpdate(Map<Id, SObject> oldRecords, Map<Id, SObject> newRecords) {
+        applyBusinessRules(newRecords.values());
+    }
+}
+```
+
+## Production use
+
+- Supports direct unit testing of handler behavior without firing a trigger.

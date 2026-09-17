@@ -1,0 +1,19 @@
+---
+import BaseCard from './BaseCard.astro';
+import ForwardLink from './ForwardLink.astro';
+
+interface Props {
+  title: string;
+  slug: string;
+  summary: string;
+}
+
+const { title, slug, summary } = Astro.props;
+---
+
+<BaseCard href={`/frameworks/${slug}`} class="framework-card">
+  <Fragment slot="meta">Salesforce framework</Fragment>
+  <Fragment slot="title">{title}</Fragment>
+  <Fragment slot="description">{summary}</Fragment>
+  <ForwardLink text="Framework details" />
+</BaseCard>

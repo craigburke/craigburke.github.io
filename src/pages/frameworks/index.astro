@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SEO from '../../components/SEO.astro';
+import FrameworkCard from '../../components/FrameworkCard.astro';
+import { getCollection } from 'astro:content';
+
+const frameworks = (await getCollection('frameworks'))
+  .sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout>
+  <SEO slot="head" title="Salesforce Frameworks" description="Salesforce frameworks developed by Craig Burke for asynchronous processing, trigger handling, and test data setup." type="website" />
+  <main class="frameworks-page">
+    <header>
+      <h1>Salesforce Frameworks</h1>
+      <p>This section includes Salesforce frameworks I developed for asynchronous job orchestration, trigger handling, and test data builders. Technical readers can examine a representative Apex example for each framework.</p>
+    </header>
+    <div class="framework-grid">
+      {frameworks.map((framework) => <FrameworkCard title={framework.data.title} slug={framework.id} summary={framework.data.summary} />)}
+    </div>
+  </main>
+  <style>
+    .frameworks-page { max-width: 1100px; margin: 0 auto; padding: 3.5rem 1.5rem 5rem; }
+    header { border-bottom: 1px solid var(--color-border); margin-bottom: 2.5rem; max-width: 760px; padding-bottom: 2.5rem; }
+    h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); letter-spacing: -.025em; line-height: 1.05; margin: .5rem 0 1rem; }
+    header > p:last-child { color: var(--color-text-secondary); font-size: 1.1rem; line-height: 1.7; }
+    .framework-grid { display: grid; gap: 1rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    @media (max-width: 760px) { .framework-grid { grid-template-columns: 1fr; } }
+  </style>
+</BaseLayout>

@@ -1,0 +1,29 @@
+---
+import { siteConfig } from '../config';
+
+interface Props {
+  title: string;
+  description?: string;
+  noSuffix?: boolean;
+  type?: 'website' | 'article' | 'profile';
+  canonicalURL?: string;
+}
+
+const { title, description = siteConfig.description, type = 'website', canonicalURL, noSuffix = false } = Astro.props;
+const fullTitle = noSuffix ? title : `${title} | ${siteConfig.author.name}`;
+const currentURL = canonicalURL || Astro.url.href;
+---
+
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={currentURL} />
+<meta name="author" content={siteConfig.author.name} />
+<meta property="og:type" content={type} />
+<meta property="og:url" content={currentURL} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:site_name" content={siteConfig.title} />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:url" content={currentURL} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />

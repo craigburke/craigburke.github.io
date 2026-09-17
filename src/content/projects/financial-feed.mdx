@@ -1,0 +1,21 @@
+---
+title: "Oracle Finance Integration"
+outcomeSummary: "Designed and built the Oracle Finance integration for CMU’s migration to Salesforce, giving gift entry users control of feed processing, journal entry management, and chart of accounts updates."
+mainScreenshot:
+  src: "/images/financial-feed.png"
+  alt: "Financial Feed Lightning app."
+  caption: "Financial Feed Lightning app."
+problem: "CMU’s migration from its legacy gift system (Ellucian Advance Web) to Salesforce required a complete architectural redesign of the Oracle Finance integration around Affinaquest’s gift data model. The institutionally critical process was previously controlled by a technical owner, which limited end user visibility and control."
+approach: "Built a Salesforce application that gives gift entry users one place to review gift activity, generate and submit Oracle feed files, process responses, and resolve exceptions. Its data model supports accounting mappings and journal entries throughout the financial feed workflow."
+techStack:
+  - "Salesforce"
+  - "Apex"
+  - "Lightning Web Components"
+  - "Asynchronous processing"
+  - "File integration"
+impact:
+  metrics: []
+  qualitative: "Load testing validated performance for 700+ feed files and 10K+ transactions per month. The application automated journal entry creation for prior year gifts, eliminating manual journal entries in most cases. It also simplified chart of accounts changes by moving historical transactions from an existing account number to an updated account number."
+featured: true
+order: 1
+---

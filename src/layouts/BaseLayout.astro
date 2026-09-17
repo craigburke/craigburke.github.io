@@ -1,0 +1,36 @@
+---
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import { siteConfig } from '../config';
+import '../styles/global.css';
+import '../styles/typography.css';
+import '../styles/utilities.css';
+---
+
+<!doctype html>
+<html lang={siteConfig.language} data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <slot name="head" />
+    <script is:inline>
+      const storedTheme = localStorage.getItem('theme');
+      const systemTheme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', storedTheme || systemTheme);
+    </script>
+  </head>
+  <body>
+    <header class="site-header"><Navigation /></header>
+    <main><slot /></main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  body { display: flex; flex-direction: column; min-height: 100vh; }
+  main { flex: 1; }
+  .site-header { position: sticky; top: 0; z-index: 100; }
+</style>

@@ -1,0 +1,32 @@
+---
+import BaseCard from './BaseCard.astro';
+import ForwardLink from './ForwardLink.astro';
+
+interface Props {
+  title: string;
+  slug: string;
+  outcomeSummary: string;
+  techStack?: string[];
+  featured?: boolean;
+}
+
+const { title, slug, outcomeSummary, techStack = [], featured = false } = Astro.props;
+---
+
+<BaseCard href={`/projects/${slug}`} class="project-card">
+  <div slot="badge">
+    {featured && <span class="featured-badge">Project</span>}
+  </div>
+  <Fragment slot="title">{title}</Fragment>
+  <Fragment slot="description">{outcomeSummary}</Fragment>
+  <div slot="tags" class="tags-list">
+    {techStack.slice(0, 4).map((tech) => <span class="tag">{tech}</span>)}
+  </div>
+  <ForwardLink text="Project details" />
+</BaseCard>
+
+<style>
+  .featured-badge { color: var(--color-accent); font-size: .6875rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+  .tags-list { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
+  .tag { border: 1px solid var(--color-border); border-radius: 999px; color: var(--color-text-secondary); font-size: .75rem; padding: .2rem .5rem; }
+</style>

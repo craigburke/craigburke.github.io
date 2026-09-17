@@ -1,0 +1,25 @@
+---
+title: "GiveCampus Gift Integration"
+outcomeSummary: "Built a GiveCampus integration that replaced monthly processing of gifts with daily automation and reduced processing time from hours to minutes."
+mainScreenshot:
+  src: "/images/gift-load.png"
+  alt: "Gift Load Lightning app."
+  caption: "Gift Load Lightning app."
+problem: "CMU’s migration from its legacy gift system (Ellucian Advance Web) to Salesforce required a new integration with the GiveCampus API, replacing the monthly manual gift load. Staff manually reviewed every transaction for known issues and sometimes left Salesforce to research exceptions, a process that could take hours."
+approach: "Built a daily API integration and Lightning application that shows gift entry users the state of each loaded gift and surfaces unmatched accounts, missing designations, and other exceptions. When automatic matching cannot make a clear decision, the account matching tool lets users review existing accounts or create a new one."
+techStack:
+  - "Salesforce"
+  - "Apex"
+  - "API integration"
+  - "Asynchronous processing"
+  - "Lightning Web Components"
+impact:
+  metrics:
+    - label: "gifts per month"
+      value: "10K+"
+    - label: "processing time"
+      value: "Hours → minutes"
+  qualitative: "Daily automation made gift data available sooner and reduced the manual work required to process it."
+featured: true
+order: 2
+---

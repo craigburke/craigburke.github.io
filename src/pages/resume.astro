@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SEO from '../components/SEO.astro';
+---
+
+<BaseLayout>
+  <SEO
+    slot="head"
+    title="Resume"
+    description="Resume for Craig Burke, Salesforce Technical Architect and Principal Developer."
+    type="website"
+  />
+  <main class="resume-page">
+    <header class="resume-header">
+      <p class="eyebrow">Resume</p>
+      <h1>Craig Burke</h1>
+      <p class="title">Salesforce Technical Architect &amp; Principal Developer</p>
+      <p class="contact">Pittsburgh, PA · Seeking remote roles · <a href="mailto:craig@craigburke.com">craig@craigburke.com</a></p>
+    </header>
+
+    <section aria-labelledby="summary-heading">
+      <h2 id="summary-heading">Professional Summary</h2>
+      <p>Salesforce Technical Architect and Principal Developer with 8+ years of Salesforce experience and 20+ years of enterprise application development experience. Specializes in solution architecture, data modeling, integration design, asynchronous processing, and Lightning app development. Fully remote since March 2020.</p>
+    </section>
+
+    <section aria-labelledby="certifications-heading">
+      <h2 id="certifications-heading">Salesforce Certifications</h2>
+      <dl class="detail-list">
+        <div><dt>Architecture</dt><dd>Application Architect · Platform Data Architect · Platform Sharing and Visibility Architect</dd></div>
+        <div><dt>Development</dt><dd>Platform Developer II · Platform Developer I · JavaScript Developer · Platform App Builder</dd></div>
+        <div><dt>Administration</dt><dd>Advanced Administrator · Administrator</dd></div>
+      </dl>
+    </section>
+
+    <section aria-labelledby="experience-heading">
+      <h2 id="experience-heading">Professional Experience</h2>
+      <article class="role">
+        <div class="role-heading">
+          <div>
+            <h3>Carnegie Mellon University, University Advancement</h3>
+            <p><strong>Principal Application Developer (Salesforce Lead/Architect)</strong></p>
+            <p>Prior titles: Assistant Director, Systems &amp; Software Development · Senior Web Technologist</p>
+          </div>
+          <p>Feb 2008–Present</p>
+        </div>
+        <div class="specialty-heading">
+          <h4>Salesforce Architecture &amp; Development</h4>
+          <p>2018–Present</p>
+        </div>
+        <ul>
+          <li>Architected and built end-to-end finance, gift, payroll, and student data integrations with data modeling, asynchronous processing, and supporting Lightning web applications.</li>
+          <li>Built an Oracle Finance integration that moved process control from a technical owner to end users. Authored the technical specification for accounting mappings, journal entries, error thresholds, and rerun controls. Load testing validated performance for <strong>700+ feed files and 10K+ transactions per month</strong>.</li>
+          <li>Built a GiveCampus integration that replaced monthly processing of gifts with daily automation and reduced processing time from <strong>hours to minutes</strong>. The integration automated account matching, pledge creation, batching, and error recovery. Load testing validated performance for <strong>10K+ gifts per month</strong>.</li>
+          <li>Built a reusable asynchronous processing framework supporting <strong>85 production Apex jobs</strong>. It enables safe reprocessing without duplicate work and publishes job status and progress through Platform Events. Built a separate Apex trigger framework with metadata-controlled execution.</li>
+          <li>Built a payroll deduction gift integration that automated imports, exports, and pledge creation. Added scheduled asynchronous processing with file validation and error reporting.</li>
+          <li>Collaborated remotely with the gift team to define requirements for financial feed, gift load, and payroll integrations. Met weekly with the team before launch and daily afterward.</li>
+          <li>Built a student data integration with a supporting Lightning web application, replacing monthly updates with daily automation for <strong>22K+ students</strong>.</li>
+          <li>Replaced legacy Process Builders with record-triggered Flows, reducing bulk-update time by <strong>82% for 300K+ Accounts and 60% for 300K+ Contacts</strong>.</li>
+          <li>Upgraded 483 Apex classes and triggers to API version 67, reviewing and updating data access and sharing where needed. Supported the transition from profile-based field-level security to permission sets.</li>
+          <li>Eliminated 186 Apex test failures, automated daily full test runs, and created reusable test-data builders to improve test consistency and maintainability.</li>
+          <li>Owned release management and CI/CD pipelines using GitLab and Salesforce CLI. Conducted code reviews, mentored developers, and approved all source-controlled production releases.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section aria-labelledby="earlier-heading">
+      <h2 id="earlier-heading">Earlier Experience</h2>
+      <p><strong>Lead Programmer / Programmer-Analyst</strong>, eSteward, The Pennsylvania State University · 2005–2008</p>
+    </section>
+
+    <section aria-labelledby="expertise-heading">
+      <h2 id="expertise-heading">Technical Expertise</h2>
+      <dl class="detail-list">
+        <div><dt>Salesforce</dt><dd>Apex, Lightning Web Components, SOQL, data modeling, validation/error workflows, automated testing</dd></div>
+        <div><dt>Security &amp; Governance</dt><dd>Permission-set-based FLS, Apex sharing and user-mode security</dd></div>
+        <div><dt>Architecture &amp; Integration</dt><dd>Asynchronous job orchestration, Platform Events, API and file integrations, named and external credentials, REST/SOAP APIs, OAuth, SFTP</dd></div>
+        <div><dt>DevOps</dt><dd>Salesforce CLI, source-driven deployments, automated test execution, GitLab CI/CD</dd></div>
+        <div><dt>Specialized Tools</dt><dd>Affinaquest, DBAmp, Salesforce Own, Codex</dd></div>
+        <div><dt>Previous Technologies</dt><dd>Java, C#, .NET, SQL Server, PostgreSQL, Oracle PL/SQL, Groovy</dd></div>
+      </dl>
+    </section>
+
+    <section aria-labelledby="education-heading">
+      <h2 id="education-heading">Education</h2>
+      <p>Carnegie Mellon University · M.S. in Information Technology</p>
+      <p>The Pennsylvania State University · B.S. in Computer Science</p>
+    </section>
+  </main>
+
+  <style>
+    .resume-page { max-width: 1100px; margin: 0 auto; padding: 3.5rem 1.5rem 5rem; }
+    .resume-header { border-bottom: 1px solid var(--color-border); padding-bottom: 2.25rem; }
+    .eyebrow { color: var(--color-accent); font-size: .72rem; font-weight: 650; letter-spacing: .1em; text-transform: uppercase; }
+    h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); letter-spacing: -.025em; line-height: 1.05; margin: .5rem 0; }
+    .title { font-size: 1.2rem; font-weight: 650; }
+    .contact, .role-heading > div > p:last-child { color: var(--color-text-secondary); }
+    .contact { margin-top: .8rem; }
+    section { border-bottom: 1px solid var(--color-border); padding: 2.25rem 0; }
+    section:last-child { border-bottom: 0; }
+    h2 { font-size: 1.05rem; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 1rem; }
+    h3 { font-size: 1.25rem; margin-bottom: .6rem; }
+    h4 { font-size: 1rem; }
+    p, li, dd { line-height: 1.65; }
+    .detail-list { display: grid; gap: .65rem; }
+    .detail-list div { display: grid; gap: .35rem; grid-template-columns: minmax(10rem, .3fr) 1fr; }
+    dt { font-weight: 700; }
+    .role-heading, .specialty-heading { display: flex; gap: 1.5rem; justify-content: space-between; }
+    .role-heading > p, .specialty-heading > p { color: var(--color-text-secondary); flex: none; }
+    .specialty-heading { align-items: baseline; border-top: 1px solid var(--color-border-subtle); margin-top: 1.5rem; padding-top: 1.25rem; }
+    ul { display: grid; gap: .55rem; margin-top: 1rem; padding-left: 1.25rem; }
+    @media (max-width: 640px) {
+      .detail-list div { grid-template-columns: 1fr; }
+      .role-heading, .specialty-heading { flex-direction: column; gap: .35rem; }
+      .role-heading > p, .specialty-heading > p { order: -1; }
+    }
+  </style>
+</BaseLayout>
