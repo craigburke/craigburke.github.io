@@ -8,18 +8,17 @@ import '../styles/utilities.css';
 ---
 
 <!doctype html>
-<html lang={siteConfig.language} data-theme="dark">
+<html lang={siteConfig.language} data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="theme-color" content="#ffffff" />
     <slot name="head" />
     <script is:inline>
       const storedTheme = localStorage.getItem('theme');
-      const systemTheme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', storedTheme || systemTheme);
+      document.documentElement.setAttribute('data-theme', storedTheme || 'light');
     </script>
   </head>
   <body>
