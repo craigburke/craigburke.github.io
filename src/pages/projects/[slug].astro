@@ -11,7 +11,10 @@ export async function getStaticPaths() {
 
 const project = await getEntry('projects', Astro.params.slug!);
 if (!project) return Astro.redirect('/404');
-const { title, outcomeSummary, mainScreenshot, problem, approach, techStack, impact } = project.data;
+const { title, outcomeSummary, mainScreenshot, additionalScreenshots, problem, approach, techStack, impact } = project.data;
+const galleryScreenshots = mainScreenshot
+  ? [mainScreenshot, ...additionalScreenshots, ...Array(2 - additionalScreenshots.length).fill(mainScreenshot)]
+  : [];
 ---
 
 <BaseLayout>
@@ -23,18 +26,52 @@ const { title, outcomeSummary, mainScreenshot, problem, approach, techStack, imp
       <p class="tech-stack"><strong>Built with:</strong> {techStack.join(' · ')}</p>
       <p class="outcome">{outcomeSummary}</p>
       {mainScreenshot && (
-        <figure class="main-screenshot">
-          <img src={mainScreenshot.src} alt={mainScreenshot.alt} />
-          <figcaption>{mainScreenshot.caption}</figcaption>
-        </figure>
+        <div class="main-screenshot">
+          <figure class="main-screenshot">
+            <img src={mainScreenshot.src} alt={mainScreenshot.alt} />
+            <figcaption>{mainScreenshot.caption}</figcaption>
+          </figure>
+        </div>
       )}
     </header>
 
     <section><h2>The problem</h2><p>{problem}</p></section>
     <section><h2>Implementation</h2><p>{approach}</p></section>
     <section><h2>Results</h2>{impact.metrics.length > 0 && <dl>{impact.metrics.map((metric) => <div><dt>{metric.value}</dt><dd>{metric.label}</dd></div>)}</dl>}<p>{impact.qualitative}</p></section>
+    {galleryScreenshots.length > 0 && (
+      <section class="screenshots" aria-labelledby="screenshots-heading">
+        <h2 id="screenshots-heading">Screenshots</h2>
+        <div class="screenshot-grid">
+          {galleryScreenshots.map((screenshot) => (
+            <button
+              type="button"
+              class="screenshot-card"
+              aria-label={`View ${screenshot.caption}`}
+              data-lightbox-trigger
+              data-src={screenshot.src}
+              data-alt={screenshot.alt}
+              data-caption={screenshot.caption}
+            >
+              <img src={screenshot.src} alt="" loading="lazy" />
+              <span>{screenshot.caption}</span>
+              <span class="screenshot-card-view" aria-hidden="true">View</span>
+            </button>
+          ))}
+        </div>
+      </section>
+    )}
     <BackLink href="/projects" text="All integration projects" />
   </article>
+
+  <dialog class="screenshot-lightbox" data-screenshot-lightbox aria-label="Screenshot preview">
+    <button class="lightbox-close" type="button" aria-label="Close screenshot" data-lightbox-close>Close</button>
+    <button class="lightbox-previous" type="button" aria-label="Previous screenshot" data-lightbox-previous>←</button>
+    <button class="lightbox-next" type="button" aria-label="Next screenshot" data-lightbox-next>→</button>
+    <figure>
+      <img data-lightbox-image src="" alt="" />
+      <figcaption data-lightbox-caption></figcaption>
+    </figure>
+  </dialog>
 
   <style>
     .case-study { max-width: 1100px; margin: 0 auto; padding: 3.5rem 1.5rem 5rem; }
@@ -46,13 +83,73 @@ const { title, outcomeSummary, mainScreenshot, problem, approach, techStack, imp
     p { color: var(--color-text-secondary); font-size: 1.03rem; line-height: 1.7; }
     .outcome { color: var(--color-text-secondary); font-size: 1.2rem; line-height: 1.65; }
     .main-screenshot { margin-top: 2rem; }
+    .main-screenshot figure { margin: 0; max-width: 900px; }
     .main-screenshot img { border: 1px solid var(--color-border); border-radius: .5rem; display: block; width: 100%; }
     .main-screenshot figcaption { color: var(--color-text-muted); font-size: .9rem; margin-top: .65rem; }
+    .screenshots { border-top: 1px solid var(--color-border); padding-top: 2.5rem; }
+    .screenshot-grid { display: grid; gap: 1rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .screenshot-card { appearance: none; background: transparent; border: 1px solid var(--color-border); border-radius: .5rem; color: var(--color-text-secondary); cursor: pointer; overflow: hidden; padding: 0; position: relative; text-align: left; }
+    .screenshot-card:hover, .screenshot-card:focus-visible { border-color: var(--color-accent); box-shadow: 0 0 0 1px var(--color-accent); }
+    .screenshot-card img { aspect-ratio: 16 / 9; display: block; object-fit: contain; width: 100%; }
+    .screenshot-card > span:not(.screenshot-card-view) { display: block; font-size: .84rem; line-height: 1.3; padding: .65rem .75rem; }
+    .screenshot-card-view { bottom: .65rem; color: var(--color-accent); font-size: .8rem; font-weight: 650; position: absolute; right: .75rem; }
+    .screenshot-lightbox { background: transparent; border: 0; box-sizing: border-box; height: 100dvh; inset: 0; margin: 0; max-height: none; max-width: none; overflow: visible; padding: 1.5rem; width: 100vw; }
+    .screenshot-lightbox[open] { align-items: center; display: grid; justify-items: center; }
+    .screenshot-lightbox::backdrop { background: rgb(11 13 18 / .86); }
+    .screenshot-lightbox figure { margin: 0; max-width: 94vw; position: relative; }
+    .screenshot-lightbox img { border-radius: .35rem; box-shadow: 0 1.5rem 4rem rgb(0 0 0 / .35); display: block; max-height: calc(92vh - 3rem); max-width: 94vw; width: auto; }
+    .screenshot-lightbox figcaption { color: white; font-size: .9rem; margin-top: .75rem; text-align: center; }
+    .lightbox-close { appearance: none; background: rgb(11 13 18 / .78); border: 1px solid rgb(255 255 255 / .5); border-radius: 999px; color: white; cursor: pointer; font: inherit; font-size: 0; height: 2.25rem; padding: 0; position: absolute; right: .65rem; top: .65rem; width: 2.25rem; z-index: 1; }
+    .lightbox-close::before { content: '×'; font-size: 1.5rem; line-height: 1; }
+    .lightbox-close:hover, .lightbox-close:focus-visible { background: var(--color-accent); border-color: var(--color-accent); }
+    .lightbox-previous, .lightbox-next { align-items: center; appearance: none; background: rgb(11 13 18 / .78); border: 1px solid rgb(255 255 255 / .5); border-radius: 999px; color: white; cursor: pointer; display: flex; font: inherit; font-size: 1.5rem; height: 2.5rem; justify-content: center; padding: 0 0 .1rem; position: absolute; top: 50%; transform: translateY(-50%); width: 2.5rem; }
+    .lightbox-previous { left: .65rem; }
+    .lightbox-next { right: .65rem; }
+    .lightbox-previous:hover, .lightbox-previous:focus-visible, .lightbox-next:hover, .lightbox-next:focus-visible { background: var(--color-accent); border-color: var(--color-accent); }
     .tech-stack { color: var(--color-text-muted); font-size: .9rem; margin-top: 1.25rem; }
     .tech-stack strong { color: var(--color-text-secondary); }
     dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin: 0 0 1.5rem; }
     dl div { border-top: 1px solid var(--color-border); padding-top: .75rem; }
     dt { color: var(--color-text); font-size: 1.8rem; font-weight: 650; letter-spacing: -.04em; }
     dd { color: var(--color-text-secondary); font-size: .85rem; line-height: 1.45; margin: .4rem 0 0; }
+    @media (max-width: 700px) { .screenshot-grid { grid-template-columns: 1fr; } }
   </style>
+
+  <script>
+    const lightbox = document.querySelector<HTMLDialogElement>('[data-screenshot-lightbox]');
+    const lightboxImage = lightbox?.querySelector<HTMLImageElement>('[data-lightbox-image]');
+    const lightboxCaption = lightbox?.querySelector<HTMLElement>('[data-lightbox-caption]');
+
+    const triggers = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-lightbox-trigger]'));
+    let activeScreenshotIndex = 0;
+
+    const showScreenshot = (index: number) => {
+      if (!lightbox || !lightboxImage || !lightboxCaption || triggers.length === 0) return;
+      activeScreenshotIndex = (index + triggers.length) % triggers.length;
+      const trigger = triggers[activeScreenshotIndex];
+      lightboxImage.src = trigger.dataset.src ?? '';
+      lightboxImage.alt = trigger.dataset.alt ?? '';
+      lightboxCaption.textContent = trigger.dataset.caption ?? '';
+    };
+
+    triggers.forEach((trigger, index) => {
+      trigger.addEventListener('click', () => {
+        if (!lightbox) return;
+        showScreenshot(index);
+        lightbox.showModal();
+        lightbox.querySelector<HTMLButtonElement>('[data-lightbox-close]')?.focus();
+      });
+    });
+
+    lightbox?.querySelector<HTMLButtonElement>('[data-lightbox-close]')?.addEventListener('click', () => lightbox.close());
+    lightbox?.querySelector<HTMLButtonElement>('[data-lightbox-previous]')?.addEventListener('click', () => showScreenshot(activeScreenshotIndex - 1));
+    lightbox?.querySelector<HTMLButtonElement>('[data-lightbox-next]')?.addEventListener('click', () => showScreenshot(activeScreenshotIndex + 1));
+    lightbox?.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') showScreenshot(activeScreenshotIndex - 1);
+      if (event.key === 'ArrowRight') showScreenshot(activeScreenshotIndex + 1);
+    });
+    lightbox?.addEventListener('click', (event) => {
+      if (event.target === lightbox) lightbox.close();
+    });
+  </script>
 </BaseLayout>

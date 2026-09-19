@@ -11,6 +11,11 @@ const projectsCollection = defineCollection({
       alt: z.string(),
       caption: z.string(),
     }).optional(),
+    additionalScreenshots: z.array(z.object({
+      src: z.string(),
+      alt: z.string(),
+      caption: z.string(),
+    })).max(2).default([]),
     problem: z.string(),
     approach: z.string(),
     techStack: z.array(z.string()),
