@@ -12,8 +12,8 @@ export async function getStaticPaths() {
 const project = await getEntry('projects', Astro.params.slug!);
 if (!project) return Astro.redirect('/404');
 const { title, outcomeSummary, mainScreenshot, additionalScreenshots, problem, approach, techStack, impact } = project.data;
-const galleryScreenshots = mainScreenshot
-  ? [mainScreenshot, ...additionalScreenshots, ...Array(2 - additionalScreenshots.length).fill(mainScreenshot)]
+const galleryScreenshots = mainScreenshot && additionalScreenshots.length > 0
+  ? [mainScreenshot, ...additionalScreenshots]
   : [];
 ---
 
