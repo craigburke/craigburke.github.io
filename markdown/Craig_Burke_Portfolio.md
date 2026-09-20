@@ -153,10 +153,68 @@ public static Id runChain() {
 }
 ```
 
+The framework includes a Lightning component for monitoring job chain progress.
+
+![Lightning component for monitoring job chain progress.](/images/asynchronous-job-progress.png)
+
 #### Production use
 
 - Supports 85 production asynchronous Apex jobs.
 - Used by finance, gift, payroll, student data, commencement, and scheduled maintenance processes.
+
+### Test Data Builders
+
+Test data builder framework that keeps Apex tests resilient as required fields and object relationships change.
+
+#### Purpose
+
+Before the framework, adding a required field to a shared object such as Account could break every test that created one. Tests also repeated default values and manually assembled related records, making setup brittle and difficult to maintain.
+
+#### Implementation
+
+Builders provide defaults for required and common fields for each object. They can return unsaved records for composition or save related records while resolving lookup relationships. Tests specify only the values relevant to the scenario, while builders create and connect dependent records as needed.
+
+The user builder creates a test user with the profile and permissions needed for the scenario.
+
+```apex
+@TestSetup
+static void testSetup() {
+    TestUtil.user(UserConstant.PROFILE_READ_ONLY)
+        .permissionSet(UserConstant.PERMISSION_SET_FINANCIAL_FEED)
+        .permissionSet(UserConstant.PERMISSION_SET_PAYROLL)
+        .save();
+}
+```
+
+The test can then create and verify related records in that user context.
+
+```apex
+@IsTest
+static void testContact() {
+    System.runAs(TestUtil.testUser) {
+        Account accountRecord = new AccountBuilder()
+            .recordType(AccountConstant.RECORD_TYPE_HOUSEHOLD)
+            .build();
+
+        Contact contactRecord = new ContactBuilder()
+            .account(accountRecord)
+            .save();
+
+        Assert.isNotNull(accountRecord.Name, 'A default value is used for the Name field');
+        Assert.isNotNull(contactRecord.Id, 'Contact was saved');
+        Assert.isNotNull(accountRecord.Id, 'Account was saved with the contact');
+        Assert.areEqual(accountRecord.Id, contactRecord.AccountId, 'Contact is linked to account');
+    }
+}
+
+```
+
+#### Test benefits
+
+- Changes to required fields and default values are updated once in the appropriate builder.
+- Tests focus on the values and relationships that matter to the scenario.
+- Builders coordinate related records and avoid repeated setup for individual records.
+- Test users receive a unique username for each test run, avoiding collisions when tests run in parallel.
 
 ### Apex Trigger
 
@@ -202,45 +260,6 @@ public class ExampleTriggerHandler extends TriggerHandler {
 
 - Used as the standard pattern for production trigger handlers.
 - Supports direct unit testing of handler behavior without firing a trigger.
-
-### Test Data Builders
-
-Test data builder framework that keeps Apex tests resilient as required fields and object relationships change.
-
-#### Purpose
-
-Before the framework, adding a required field to a shared object such as Account could break every test that created one. Tests also repeated default values and manually assembled related records, making setup brittle and difficult to maintain.
-
-#### Implementation
-
-Builders for each object centralize defaults for required and common fields. Tests specify only the values relevant to the scenario, while builders create and connect dependent records as needed.
-
-The framework tracks unsaved records and their lookup relationships, then coordinates grouped inserts and any needed subsequent updates when saving related records.
-
-```apex
-@IsTest
-class ExampleTest {
-    
-    @IsTest
-    static void testContact() {
-        Account accountRecord = new AccountBuilder()
-            .recordType(AccountConstant.RECORD_TYPE_HOUSEHOLD)
-            .build();
-
-        Contact contactRecord = new ContactBuilder()
-            .account(accountRecord)
-            .save();
-
-        // Contact is linked to account and all required fields are populated
-    }
-}
-```
-
-#### Test benefits
-
-- Changes to required fields and default values are updated once in the appropriate builder.
-- Tests focus on the values and relationships that matter to the scenario.
-- Builders coordinate related records and avoid repeated setup for individual records.
 
 ## Platform Reliability, Performance, and Security
 
