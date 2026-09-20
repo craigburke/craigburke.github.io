@@ -80,7 +80,7 @@ Built a Lightning application that lets business users run the daily student dat
 
 The application lets business users manage daily student data updates without developer involvement.
 
-### Payroll Deduction Gift
+### Payroll Deduction
 
 Automated payroll deduction gift imports, exports, and pledge creation through a Salesforce integration.
 
@@ -104,7 +104,7 @@ The application replaced manual import, export, and pledge creation with a singl
 
 This section includes Salesforce frameworks I developed for asynchronous job orchestration, trigger handling, and test data builders. Technical readers can examine a representative Apex example for each framework.
 
-### Asynchronous Job Framework
+### Asynchronous Job
 
 Framework for building and monitoring multi-step asynchronous Apex processes.
 
@@ -131,7 +131,7 @@ public with sharing class ExampleBatch extends BatchJob {
     }
 
     public override void execute(List<SObject> records) {
-        // Apply updates to custom field.
+        // Apply updates to custom field
         
         // Only update changed records and log results
         updateLogged(records);
@@ -158,24 +158,31 @@ public static Id runChain() {
 - Supports 85 production asynchronous Apex jobs.
 - Used by finance, gift, payroll, student data, commencement, and scheduled maintenance processes.
 
-### Apex Trigger Framework
+### Apex Trigger
 
 Metadata-controlled Apex trigger framework.
 
 #### Purpose
 
-The framework standardizes trigger execution and keeps business logic in focused handler classes. Individual handlers can be enabled or disabled through metadata.
+The framework standardizes trigger execution and keeps business logic in focused handler classes.
 
 #### Implementation
 
-Each trigger delegates to a handler. The base class routes the active trigger operation to the appropriate before or after method, with the relevant new and old records.
+Each object has a single trigger that contains only a call to its handler’s `run()` method. 
 
 ```apex
 trigger ExampleTrigger on Example__c (before insert, before update) {
     new ExampleTriggerHandler().run();
 }
+```
 
+The base class routes the active trigger operation to the appropriate before or after method, with the relevant new and old records. Handlers override only the methods they need.
+
+Individual handlers can be enabled or disabled through metadata or for a specific transaction at runtime.
+
+```apex
 public class ExampleTriggerHandler extends TriggerHandler {
+
     public override void beforeInsert(List<SObject> newRecords) {
         applyBusinessRules(newRecords);
     }
@@ -183,11 +190,17 @@ public class ExampleTriggerHandler extends TriggerHandler {
     public override void beforeUpdate(Map<Id, SObject> oldRecords, Map<Id, SObject> newRecords) {
         applyBusinessRules(newRecords.values());
     }
+
+    static void applyBusinessRules(List<Example__c> examples) {
+        // Update fields based on business rules
+    }
+
 }
 ```
 
 #### Production use
 
+- Used as the standard pattern for production trigger handlers.
 - Supports direct unit testing of handler behavior without firing a trigger.
 
 ### Test Data Builders

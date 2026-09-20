@@ -1,5 +1,5 @@
 ---
-title: "Asynchronous Job Framework"
+title: "Asynchronous Job"
 summary: "Framework for building and monitoring multi-step asynchronous Apex processes."
 order: 1
 ---
@@ -27,7 +27,7 @@ public with sharing class ExampleBatch extends BatchJob {
     }
 
     public override void execute(List<SObject> records) {
-        // TODO: Apply updates to custom field.
+        // Apply updates to custom field
 
         // Only update changed records and log results
         updateLogged(records);
