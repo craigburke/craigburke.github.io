@@ -4,7 +4,7 @@ export const siteConfig = {
   title: 'Craig Burke — Salesforce Technical Architect & Principal Developer',
   description: 'Salesforce Technical Architect and Principal Developer with 8+ years of Salesforce experience and 20+ years of enterprise application-development experience.',
   author: {
-    name: 'Craig A. Burke',
+    name: 'Craig Burke',
     title: 'Salesforce Technical Architect & Principal Developer',
     bio: 'Salesforce Technical Architect and Principal Developer with 8+ years of Salesforce experience and 20+ years of enterprise application-development experience.',
     email: 'craig@craigburke.com',

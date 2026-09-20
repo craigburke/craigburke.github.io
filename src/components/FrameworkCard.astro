@@ -12,8 +12,14 @@ const { title, slug, summary } = Astro.props;
 ---
 
 <BaseCard href={`/frameworks/${slug}`} class="framework-card">
-  <Fragment slot="meta">Salesforce framework</Fragment>
+  <div slot="badge">
+    <span class="framework-badge">Framework</span>
+  </div>
   <Fragment slot="title">{title}</Fragment>
   <Fragment slot="description">{summary}</Fragment>
   <ForwardLink text="Framework details" />
 </BaseCard>
+
+<style>
+  .framework-badge { color: var(--color-accent); font-size: .6875rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+</style>
