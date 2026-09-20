@@ -10,11 +10,32 @@ CMU’s integrations perform ordered work such as retrieving data, matching and 
 
 ## Implementation
 
-The framework composes Batch and Queueable jobs into a defined sequence and records the chain and each job as it runs. It can publish job status and progress through Platform Events and send a completion email summarizing duration, record counts, and errors across the chain.
+The framework composes Batch and Queueable jobs into a defined sequence and logs each job as it runs. It can publish job status and progress through Platform Events and send a completion email summarizing duration, record counts, and errors across the chain.
 
-Jobs can run in their normal scope, expand to a full run, or target selected records for partial reprocessing.
+Individual batch jobs define the records they handle in normal and full runs. A normal run targets records that need processing; a full run includes all eligible records. The framework uses the active run mode to select records and updates only records whose fields changed, minimizing unnecessary updates during high-volume processing.
 
-It also logs record changes and errors. Existing records are updated only when tracked fields have changed, minimizing unnecessary updates during high-volume processing. When enabled, field history preserves old and new values for troubleshooting and rollback.
+```apex
+public with sharing class ExampleBatch extends BatchJob {
+    public override Database.QueryLocator start() {
+        allRunWhere.isTrue('Is_Active__c');
+        normalRunWhere.isNull('Custom_Field__c');
+
+        return new QueryBuilder('Contact')
+            .selectField('Custom_Field__c')
+            .whereClause(jobWhere)
+            .getQueryLocator();
+    }
+
+    public override void execute(List<SObject> records) {
+        // TODO: Apply updates to custom field.
+
+        // Only update changed records and log results
+        updateLogged(records);
+    }
+}
+```
+
+Individual jobs can be run together in sequence by adding them to a job chain.
 
 ```apex
 public static Id runChain() {
